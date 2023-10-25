@@ -2,12 +2,15 @@
 import React, { useCallback, useState } from "react";
 import { FaRegUser } from "react-icons/fa";
 import MenuItem from "./MenuItem";
+import useRegisterModal from "@/app/hooks/useRegisterModal";
 
 const User = () => {
   const [isOpen, setIsOpen] = useState(false);
   const toggleOpen = useCallback(() => {
     setIsOpen((value) => !value);
   }, []);
+  const registerModal = useRegisterModal();
+
   return (
     <div className="relative">
       <div className="flex flex-row items-center gap-3">
@@ -40,7 +43,7 @@ const User = () => {
           >
             <>
               <MenuItem onClick={() => {}} label="Login" />
-              <MenuItem onClick={() => {}} label="Signup" />
+              <MenuItem onClick={registerModal.onOpen} label="Signup" />
             </>
           </div>
         </div>
