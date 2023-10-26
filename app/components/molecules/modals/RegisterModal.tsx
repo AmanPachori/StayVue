@@ -10,9 +10,12 @@ import Heading from "../../atoms/Heading/Heading";
 import Input from "../../atoms/Input/Input";
 import Modal from "./Modal";
 import Button from "../../atoms/Buttons/Button";
+import useLoginModal from "@/app/hooks/useLoginModal";
 
 const RegisterModal = () => {
   const registerModal = useRegisterModal();
+  const loginModal = useLoginModal();
+
   const [isLoading, setIsLoading] = useState(false);
   const {
     register,
@@ -41,6 +44,11 @@ const RegisterModal = () => {
         setIsLoading(false);
       });
   };
+
+  const onToggle = useCallback(() => {
+    registerModal.onClose();
+    loginModal.onOpen();
+  }, [loginModal, registerModal]);
 
   const bodyContent = (
     <div className="flex flex-col gap-4">
@@ -87,7 +95,7 @@ const RegisterModal = () => {
         <p>
           Already have an account?
           <span
-            onClick={() => {}}
+            onClick={onToggle}
             className="
               text-neutral-800
               cursor-pointer 
