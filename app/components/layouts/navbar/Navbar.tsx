@@ -6,6 +6,7 @@ import Users from "./User";
 
 import { User } from "@prisma/client";
 import Link from "next/link";
+import Categories from "./Categories";
 
 interface NavbarProps {
   currentUser?: User | null;
@@ -37,6 +38,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentUser }) => {
           </div>
         </Container>
       </div>
+      <Categories />
     </div>
   );
 };
