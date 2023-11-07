@@ -7,6 +7,7 @@ import useLoginModal from "@/app/hooks/useLoginModal";
 import { User } from "@prisma/client";
 import { signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import useRentModal from "@/app/hooks/useRentModal";
 
 interface UsersProps {
   currentUser?: User | null;
@@ -19,8 +20,16 @@ const Users: React.FC<UsersProps> = ({ currentUser }) => {
   }, []);
   const loginModal = useLoginModal();
   const registerModal = useRegisterModal();
+  const rentModal = useRentModal();
 
   const router = useRouter();
+
+  const onRent = useCallback(() => {
+    if (!currentUser) {
+      return loginModal.onOpen();
+    }
+    rentModal.onOpen();
+  }, [currentUser, loginModal, rentModal]);
 
   return (
     <div className="relative">
@@ -49,7 +58,7 @@ const Users: React.FC<UsersProps> = ({ currentUser }) => {
           className="absolute 
         rounded-[10px]
         shadow-md
-        w-[10vw]
+        w-[20vw]
         bg-white 
         overflow-hidden 
         right-0 
@@ -63,6 +72,7 @@ const Users: React.FC<UsersProps> = ({ currentUser }) => {
             {currentUser ? (
               <>
                 <MenuItem label="My trips" onClick={() => router.push("/")} />
+                <MenuItem label="Rent Your Place" onClick={() => onRent()} />
                 <hr />
                 <MenuItem label="Logout" onClick={() => signOut()} />
               </>
