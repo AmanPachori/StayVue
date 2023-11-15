@@ -2,6 +2,7 @@ import getCurrentUser from "./actions/getCurrentUser";
 import getListings, { IListingsParams } from "./actions/getListings";
 import Container from "./components/Container";
 import EmptyState from "./components/EmptyState";
+import HomePage from "./components/molecules/homePage/HomePage";
 import ListingCard from "./components/molecules/listings/ListingCard";
 
 interface HomeProps {
@@ -18,9 +19,12 @@ const Home = async ({ searchParams }: HomeProps) => {
 
   return (
     <Container>
-      <div
-        className="
-            pt-24
+      <div className="pt-24">
+        <div className="pt-5 h-[50vh]">
+          <HomePage />
+        </div>
+        <div
+          className="
             grid 
             grid-cols-1 
             sm:grid-cols-2 
@@ -30,14 +34,15 @@ const Home = async ({ searchParams }: HomeProps) => {
             2xl:grid-cols-6
             gap-8
           "
-      >
-        {listings.map((listing: any) => (
-          <ListingCard
-            currentUser={currentUser}
-            key={listing.id}
-            data={listing}
-          />
-        ))}
+        >
+          {listings.map((listing: any) => (
+            <ListingCard
+              currentUser={currentUser}
+              key={listing.id}
+              data={listing}
+            />
+          ))}
+        </div>
       </div>
     </Container>
   );

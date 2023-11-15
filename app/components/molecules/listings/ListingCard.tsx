@@ -8,6 +8,7 @@ import { format } from "date-fns";
 import Button from "../../atoms/Buttons/Button";
 import Image from "next/image";
 import HeartButton from "../../atoms/Buttons/HeartButton";
+import { motion } from "framer-motion";
 
 interface ListingCardProps {
   data: Listing;
@@ -63,7 +64,7 @@ const ListingCard: React.FC<ListingCardProps> = ({
   return (
     <div
       onClick={() => router.push(`/listings/${data.id}`)}
-      className="col-span-1 cursor-pointer group"
+      className="col-span-1 cursor-pointer p-2 group hover:bg-gradient-to-t  hover:from-fourth  hover:via-white hover:to-white rounded-xl hover:scale-105 transition"
     >
       <div className="flex flex-col gap-2 w-full">
         <div
@@ -81,7 +82,7 @@ const ListingCard: React.FC<ListingCardProps> = ({
           object-cover 
           h-full 
           w-full 
-          group-hover:scale-110 
+          group-hover:scale-101 
           transition
         "
             src={data.imageSrc}
@@ -97,15 +98,16 @@ const ListingCard: React.FC<ListingCardProps> = ({
             <HeartButton listingId={data.id} currentUser={currentUser} />
           </div>
         </div>
-        <div className="font-semibold text-lg">
+        <div className="flex flex-row items-center px-2 leading-4 mt-3">
+          <div className="font-semibold">
+            <span className="text-secondary">$</span> {price}
+          </div>
+        </div>
+        <div className="font-bold text-2xl text-primary px-2 leading-6">
+          {reservationDate || data.title}
+        </div>
+        <div className="font-bold text-lg px-2 mb-3">
           {location?.region}, {location?.label}
-        </div>
-        <div className="font-light text-neutral-500">
-          {reservationDate || data.category}
-        </div>
-        <div className="flex flex-row items-center gap-1">
-          <div className="font-semibold">$ {price}</div>
-          {!reservation && <div className="font-light">night</div>}
         </div>
         {onAction && actionLabel && (
           <Button
