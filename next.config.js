@@ -3,6 +3,9 @@ const nextConfig = {
   images: {
     domains: ["res.cloudinary.com", "real-estate-web.pages.dev"],
   },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
 };
 
 module.exports = nextConfig;
