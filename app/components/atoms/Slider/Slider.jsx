@@ -23,29 +23,6 @@ const SlickArrowRight = ({ ...props }) => (
   </div>
 );
 
-type CourselProps = {
-  fade?: boolean;
-  infinite?: boolean;
-  vertical?: boolean;
-  showDots?: boolean;
-  autoPlay?: boolean;
-  slideSpeed?: number;
-  centerMode?: boolean;
-  showArrows?: boolean;
-  slidesToShow?: number;
-  CustomArrows?: boolean;
-  autoPlayDelay?: number;
-  centerPadding?: string;
-  variableWidth?: boolean;
-  children: React.ReactNode;
-  mobilecenterMode?: boolean;
-  LeftArrow?: React.FunctionComponent;
-  RightArrow?: React.FunctionComponent;
-  showCustomPaging?: null | React.FunctionComponent;
-  dotsWidth?: string;
-  dotsClass?: string;
-};
-
 const Coursel = ({
   children,
   showArrows = false,
@@ -67,7 +44,7 @@ const Coursel = ({
   vertical = false,
   dotsWidth = "w-10 md:w-20",
   dotsClass = "",
-}: CourselProps) => {
+}) => {
   const SliderSettings = {
     focusOnSelect: true,
     speed: slideSpeed,
