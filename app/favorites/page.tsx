@@ -20,7 +20,11 @@ const page = async () => {
     );
   }
 
-  return <FavouritesClient listings={listings} currentUser={currentUser} />;
+  return (
+    <>
+      <FavouritesClient listings={listings} currentUser={currentUser} />
+    </>
+  );
 };
 
 export default page;

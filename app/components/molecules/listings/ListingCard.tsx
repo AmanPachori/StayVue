@@ -9,6 +9,8 @@ import Button from "../../atoms/Buttons/Button";
 import Image from "next/image";
 import HeartButton from "../../atoms/Buttons/HeartButton";
 import { motion } from "framer-motion";
+import { IoLocationOutline } from "react-icons/io5";
+import { FaDollarSign } from "react-icons/fa";
 
 interface ListingCardProps {
   data: Listing;
@@ -64,25 +66,22 @@ const ListingCard: React.FC<ListingCardProps> = ({
   return (
     <div
       onClick={() => router.push(`/listings/${data.id}`)}
-      className="col-span-1 cursor-pointer p-2 group hover:bg-gradient-to-t  hover:from-fourth  hover:via-white hover:to-white rounded-xl hover:scale-105 transition"
+      className="col-span-1 cursor-pointer transition rounded-xl max-h-[400px] max-w-[310px] mx-1 border"
     >
-      <div className="flex flex-col gap-2 w-full">
+      <div className="flex flex-col gap-1 w-full">
         <div
           className="
-        aspect-square 
+        aspect-video 
         w-full 
         relative 
-        overflow-hidden 
-        rounded-xl
-      "
+        overflow-hidden
+        "
         >
           <Image
             fill
             className="
+            rounded-t-xl 
           object-cover 
-          h-full 
-          w-full 
-          group-hover:scale-101 
           transition
         "
             src={data.imageSrc}
@@ -97,26 +96,35 @@ const ListingCard: React.FC<ListingCardProps> = ({
           >
             <HeartButton listingId={data.id} currentUser={currentUser} />
           </div>
-        </div>
-        <div className="flex flex-row items-center px-2 leading-4 mt-3">
-          <div className="font-semibold">
-            <span className="text-secondary">$</span> {price}
+          <div className="absolute top-3 left-1 bg-white text-primary py-1 px-3 rounded-lg font-normal text-base ">
+            {data.category}
           </div>
         </div>
-        <div className="font-bold text-2xl text-primary px-2 leading-6">
+        <div className="flex flex-col justify-center leading-2 mt-2 px-2">
+          <div className="font-bold flex items-center text-lg">
+            <FaDollarSign />
+            {price}
+          </div>
+          <div className="font-light text-sm flex items-center">
+            <IoLocationOutline />
+            {location?.region}, {location?.label}
+          </div>
+        </div>
+        <hr />
+        <div className="font-bold text-md md:text-lg text-primary px-2 leading-6">
           {reservationDate || data.title}
         </div>
-        <div className="font-bold text-lg px-2 mb-3">
-          {location?.region}, {location?.label}
+
+        <div className="p-2">
+          {onAction && actionLabel && (
+            <Button
+              disabled={disabled}
+              small
+              label={actionLabel}
+              onClick={handleCancel}
+            />
+          )}
         </div>
-        {onAction && actionLabel && (
-          <Button
-            disabled={disabled}
-            small
-            label={actionLabel}
-            onClick={handleCancel}
-          />
-        )}
       </div>
     </div>
   );

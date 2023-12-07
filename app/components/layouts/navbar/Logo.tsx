@@ -3,16 +3,18 @@
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
-const Logo = () => {
+interface IlogoProps {
+  color?: string | "primary";
+}
+const Logo: React.FC<IlogoProps> = ({ color }) => {
   const router = useRouter();
   return (
-    <Image
-      alt="Logo"
-      className="hidden md:block cursor-pointer"
-      height={100}
-      width={100}
-      src="/next.svg"
-    />
+    <p
+      className={`font-bold text-2xl italic logo cursor-pointer text-${color}`}
+      onClick={() => router.push("/")}
+    >
+      StayVue
+    </p>
   );
 };
 

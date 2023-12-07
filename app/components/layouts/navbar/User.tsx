@@ -38,7 +38,7 @@ const Users: React.FC<UsersProps> = ({ currentUser }) => {
           onClick={() => {
             toggleOpen();
           }}
-          className="hidden md:block text-sm font-semibold transition cursor-pointer"
+          className="block text-sm font-semibold transition cursor-pointer"
         >
           <div className="h-auto py-2.5 px-4 border border-neutral-300 rounded-[10px] transition-all duration-300 m-0 hover:bg-gray-50">
             {currentUser ? (
@@ -58,7 +58,7 @@ const Users: React.FC<UsersProps> = ({ currentUser }) => {
           className="absolute 
         rounded-[10px]
         shadow-md
-        w-[20vw]
+        w-[240px]
         bg-white 
         overflow-hidden 
         right-0 
@@ -71,8 +71,19 @@ const Users: React.FC<UsersProps> = ({ currentUser }) => {
           >
             {currentUser ? (
               <>
-                <MenuItem label="My trips" onClick={() => router.push("/")} />
                 <MenuItem label="Rent Your Place" onClick={() => onRent()} />
+                <MenuItem
+                  label="Favourites"
+                  onClick={() => router.push("/favorites")}
+                />
+                <MenuItem
+                  label="Reservations"
+                  onClick={() => router.push("/reservations")}
+                />
+                <MenuItem
+                  label="My Trips"
+                  onClick={() => router.push("/trips")}
+                />
                 <hr />
                 <MenuItem label="Logout" onClick={() => signOut()} />
               </>

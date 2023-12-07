@@ -26,6 +26,7 @@ const TripsClient: React.FC<TripsClientProps> = ({
     (id: string) => {
       setDeletingId(id);
 
+      new Promise((resolve) => setTimeout(resolve, 4000));
       axios
         .delete(`api/reservations/${id}`)
         .then(() => {
@@ -52,10 +53,8 @@ const TripsClient: React.FC<TripsClientProps> = ({
           grid 
           grid-cols-1 
           sm:grid-cols-2 
-          md:grid-cols-3 
           lg:grid-cols-4
-          xl:grid-cols-5
-          2xl:grid-cols-6
+
           gap-8"
       >
         {reservations?.map((reservation: any) => (

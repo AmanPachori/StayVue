@@ -1,7 +1,6 @@
 import React from "react";
 import Container from "../../Container";
 import Logo from "./Logo";
-import Links from "./Links";
 import Users from "./User";
 
 import { User } from "@prisma/client";
@@ -33,12 +32,10 @@ const Navbar: React.FC<NavbarProps> = ({ currentUser }) => {
           "
           >
             <Logo />
-            <Links />
             <Users currentUser={currentUser} />
           </div>
         </Container>
       </div>
-      <Categories />
     </div>
   );
 };
