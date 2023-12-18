@@ -1,8 +1,8 @@
 import React from "react";
 import EmptyState from "../components/EmptyState";
 import getCurrentUser from "../actions/getCurrentUser";
-import getReservations from "../actions/getReservations";
 import TripsClient from "./TripsClient";
+import getReservations from "../actions/getReservations";
 
 const TripsPage = async () => {
   const currentUser = await getCurrentUser();

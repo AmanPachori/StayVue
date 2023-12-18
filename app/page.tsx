@@ -11,7 +11,7 @@ import ListingCard from "./components/molecules/listings/ListingCard";
 
 const Home = async ({}) => {
   const currentUser = await getCurrentUser();
-  const listings = await getListings({ userId: currentUser?.id });
+  const listings = await getListings({ userId: undefined });
 
   if (listings.length === 0) {
     return (
