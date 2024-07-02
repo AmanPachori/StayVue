@@ -8,6 +8,7 @@ import Coursel from "./components/atoms/Slider/Slider";
 import FaqPage from "./components/molecules/Pages/FaqPage";
 import HomePage from "./components/molecules/Pages/HomePage";
 import ListingCard from "./components/molecules/listings/ListingCard";
+import Partners from "./components/molecules/partners/Partners";
 
 const Home = async ({}) => {
   const currentUser = await getCurrentUser();
@@ -25,8 +26,11 @@ const Home = async ({}) => {
     <ClientOnly>
       <Container>
         <div className="">
-          <div className="sm:py-5 h-[50vh]">
+          <div className="sm:py-5 h-[70vh]">
             <HomePage />
+          </div>
+          <div className="h-[10vh] my-5">
+            <Partners />
           </div>
           <div className="">
             <p className="text-2xl font-black text-primary">Best Choices</p>
