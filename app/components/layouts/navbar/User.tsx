@@ -33,22 +33,38 @@ const Users: React.FC<UsersProps> = ({ currentUser }) => {
   }, [currentUser, loginModal, rentModal]);
 
   return (
-    <div className="w-3/4">
+    <div className="w-3/4 ">
       {currentUser ? (
-        <>
-          <MenuItem label="Rent Your Place" onClick={() => onRent()} />
-          <MenuItem
-            label="Favourites"
-            onClick={() => router.push("/favorites")}
-          />
-          <MenuItem
-            label="Reservations"
-            onClick={() => router.push("/reservations")}
-          />
-          <MenuItem label="My Trips" onClick={() => router.push("/trips")} />
-          <hr />
-          <MenuItem label="Logout" onClick={() => signOut()} />
-        </>
+        <div className="flex justify-between items-center">
+          <div className="flex justify-between items-center  w-3/4  ">
+            <MenuItem
+              label="Home"
+              bold="bold"
+              onClick={() => router.push("/")}
+            />
+            <MenuItem
+              label="Discover"
+              bold="normal"
+              onClick={() => router.push("/")}
+            />
+            <MenuItem label="Rent" onClick={() => onRent()} />
+            <MenuItem
+              label="Favourites"
+              onClick={() => router.push("/favorites")}
+            />
+            <MenuItem
+              label="Reservations"
+              onClick={() => router.push("/reservations")}
+            />
+            <MenuItem label="My Trips" onClick={() => router.push("/trips")} />
+          </div>
+          <div className="flex justify-around items-center ">
+            <div className="font-bold mr-5 border px-5 py-3 rounded-3xl ">
+              {currentUser?.name}
+            </div>
+            <PurpleButton label="Logout" onClick={() => signOut()} />
+          </div>
+        </div>
       ) : (
         <div className="flex justify-between items-center">
           <div className="flex justify-between items-center  w-1/2">

@@ -66,7 +66,7 @@ const ListingCard: React.FC<ListingCardProps> = ({
   return (
     <div
       onClick={() => router.push(`/listings/${data.id}`)}
-      className="col-span-1 cursor-pointer transition rounded-xl max-h-[400px] max-w-[310px] mx-1 border"
+      className="col-span-1 cursor-pointer transition rounded-xl min-h-[260px] max-w-[310px] mx-1 border"
     >
       <div className="flex flex-col gap-1 w-full">
         <div
@@ -96,25 +96,28 @@ const ListingCard: React.FC<ListingCardProps> = ({
           >
             <HeartButton listingId={data.id} currentUser={currentUser} />
           </div>
-          <div className="absolute top-3 left-1 bg-white text-primary py-1 px-3 rounded-lg font-normal text-base ">
-            {data.category}
+        </div>
+        <div className="h-[100px]">
+          <div className="flex justify-between leading-2 mt-2">
+            <div className="font-bold text-base text-black px-2 leading-6">
+              {reservationDate || data.title}
+            </div>
+            <div className="font-bold flex items-center text-base px-2 text-primary">
+              <FaDollarSign />
+              {price}
+            </div>
+          </div>
+          <div className="flex justify-between">
+            <div className="font-normal px-2 text-sm flex items-center">
+              {location?.region}, {location?.label}
+            </div>
           </div>
         </div>
-        <div className="flex flex-col justify-center leading-2 mt-2 px-2">
-          <div className="font-bold flex items-center text-lg">
-            <FaDollarSign />
-            {price}
-          </div>
-          <div className="font-light text-sm flex items-center">
-            <IoLocationOutline />
-            {location?.region}, {location?.label}
+        <div className="font-bold px-2 text-secondary ">
+          <div className="border-gray-200 border-2 w-fit px-2 rounded ">
+            {data?.category}
           </div>
         </div>
-        <hr />
-        <div className="font-bold text-md md:text-lg text-primary px-2 leading-6">
-          {reservationDate || data.title}
-        </div>
-
         <div className="p-2">
           {onAction && actionLabel && (
             <Button
