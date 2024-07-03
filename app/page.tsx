@@ -6,9 +6,11 @@ import EmptyState from "./components/EmptyState";
 import Coursel from "./components/atoms/Slider/Slider";
 
 import FaqPage from "./components/molecules/Pages/FaqPage";
+import Key from "./components/molecules/Pages/Key";
 import HomePage from "./components/molecules/Pages/HomePage";
 import ListingCard from "./components/molecules/listings/ListingCard";
 import Partners from "./components/molecules/partners/Partners";
+import NewsLater from "./components/molecules/Pages/NewsLater";
 
 const Home = async ({}) => {
   const currentUser = await getCurrentUser();
@@ -32,11 +34,21 @@ const Home = async ({}) => {
           <div className="h-[10vh] my-5">
             <Partners />
           </div>
-          <div className="">
-            <p className="text-2xl font-black text-primary">Best Choices</p>
-            <p className="text-lg font-bold text-black">Popular Residencies</p>
+          <div className="my-2 flex justify-between">
+            <div>
+              <p className="text-lg tracking-widest font-normal text-primary">
+                TOP DESTINATION
+              </p>
+              <p className="text-2xl tracking-wider font-bold text-black">
+                Explore Top Destinations
+              </p>
+            </div>
+            <div className="arrow">
+              <div className="arrow"></div>
+              <div className="arrow"></div>
+            </div>
           </div>
-          <div className="w-full flex justify-center mt-5 items-center">
+          <div className="w-full flex justify-center my-5 items-center">
             <Coursel showDots autoPlay>
               {listings.map((listing: any) => (
                 <ListingCard
@@ -47,8 +59,22 @@ const Home = async ({}) => {
               ))}
             </Coursel>
           </div>
-          <div className="sm:py-1 h-[80vh]">
+          {/* <div className="sm:py-1 h-[80vh]">
             <FaqPage />
+          </div> */}
+          <div className="mt-[80px]">
+            <p className="text-lg tracking-widest font-normal text-primary">
+              Key Features
+            </p>
+            <p className="text-2xl tracking-wider font-bold text-black">
+              We offer best services
+            </p>
+          </div>
+          <div>
+            <Key />
+          </div>
+          <div className="mt-[80px]">
+            <NewsLater />
           </div>
         </div>
       </Container>

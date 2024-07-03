@@ -34,8 +34,8 @@ export default async function RootLayout({
         <div className="homepage">
           <Navbar currentUser={currentUser} />
           <div className="pb-20 pt-28 min-h-[90vh]">{children}</div>
+          <Footer />
         </div>
-        <Footer />
       </body>
     </html>
   );
